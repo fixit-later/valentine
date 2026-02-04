@@ -79,17 +79,28 @@
 
     .card:nth-of-type(2){animation-delay:.05s}
 
-    .buttons{position:fixed;inset:0;pointer-events:none}
+    .buttons{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+      margin-top:20px;
+      pointer-events:auto
+    }
 
     button{
-      pointer-events:auto;position:fixed;
-      border:none;border-radius:999px;
-      padding:15px 28px;font-size:16px;font-weight:600;
-      transition:transform .18s cubic-bezier(.2,.8,.2,1), left .12s ease, top .12s ease
+      position:static;
+      border:none;
+      border-radius:999px;
+      padding:16px 28px;
+      font-size:16px;
+      font-weight:600;
+      min-width:220px;
+      transition:transform .18s cubic-bezier(.2,.8,.2,1)
     }
 
     .yes{
-      left:50%;top:62%;transform:translateX(-50%);
       background:linear-gradient(180deg,var(--blue),var(--green));
       color:#fff;
       box-shadow:0 18px 36px rgba(59,109,246,.45)
@@ -98,9 +109,9 @@
     .yes:active{transform:translateX(-50%) scale(.96)}
 
     .no{
-      left:50%;top:70%;transform:translateX(-50%);
-      background:#fff;color:var(--text);
-      box-shadow:0 10px 20px rgba(0,0,0,.15)
+      background:#fff;
+      color:var(--text);
+      box-shadow:0 10px 20px rgba(0,0,0,.12)
     }
 
     .result{display:none;margin-top:30px;font-size:22px;font-weight:600}
@@ -115,9 +126,8 @@
   <header class="safe"><div class="wrap"><h1>For Juls</h1><div>💗</div></div></header>
 
   <main>
-    <h2>Go Juls!</h2>
-    <div class="emoji">🏃‍♀️🔥</div>
-    <p>All gas. No brakes.</p>
+    <h2>Hey Juls</h2>
+    <p>Will you be my Valentine? 💙</p>
 
     <div class="puppy">
       <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExajh6MTU0Nmw4b2RpZTZtMGVjZXRybjkzYmxteDZmNGc0a2pvYXBldyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="puppy" />
