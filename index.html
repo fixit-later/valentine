@@ -9,52 +9,132 @@
   <title>For Juls 💗</title>
 
   <style>
-    :root{--text:#111;--muted:#6e6e73;--pink:#ff2d55;--card:#f5f5f7;--blur:saturate(180%) blur(20px);--radius:22px}
+    :root{
+      /* iOS 26 activity / motivation theme */
+      --bg1:#cfe9f4;
+      --bg2:#f4eadc;
+      --card:#ffffff;
+      --text:#1c1c1e;
+      --muted:#6e6e73;
+      --blue:#3b6df6;
+      --green:#34c759;
+      --radius:22px;
+    }
+
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;background:linear-gradient(180deg,#fff 0%,#fff4f7 100%);color:var(--text);-webkit-font-smoothing:antialiased}
-    .safe{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-    header{position:sticky;top:0;z-index:10;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);background:rgba(255,255,255,.78);border-bottom:1px solid rgba(0,0,0,.05)}
-    header .wrap{max-width:420px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-    header h1{font-size:17px;font-weight:600;margin:0}
-    main{max-width:420px;margin:0 auto;padding:36px 20px 48px;text-align:center}
-    h2{font-size:36px;letter-spacing:-.02em;margin:0 0 8px}
-    p{margin:0 0 18px;color:var(--muted)}
-    .puppy{width:160px;height:160px;margin:0 auto 22px;border-radius:24px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.12)}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;
+      background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      overflow:hidden;
+    }
+
+    header{position:fixed;top:0;left:0;right:0;z-index:20}
+
+    header .wrap{
+      max-width:420px;margin:0 auto;padding:18px 22px;
+      display:flex;justify-content:center
+    }
+
+    header h1{
+      font-size:15px;font-weight:600;color:#fff;
+      background:rgba(0,0,0,.28);
+      padding:8px 14px;border-radius:999px
+    }
+
+    main{
+      max-width:420px;margin:0 auto;padding:110px 22px 40px;text-align:center
+    }
+
+    h2{
+      font-size:42px;letter-spacing:-.045em;margin:0 0 6px;
+      background:linear-gradient(90deg,#2f6df6,#7ed957);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+
+    .emoji{font-size:22px;margin-bottom:10px}
+
+    p{margin:0 0 26px;font-size:15px;color:var(--muted)}
+
+    .puppy{
+      width:150px;height:150px;margin:10px auto 24px;border-radius:28px;
+      overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.18);
+      animation:fadeUp .6s ease both
+    }
+
     .puppy img{width:100%;height:100%;object-fit:cover}
-    .card{background:var(--card);border-radius:var(--radius);padding:22px;margin-bottom:22px;box-shadow:0 12px 32px rgba(0,0,0,.06)}
-    .buttons{position:relative;height:130px;margin-top:22px}
-    button{position:absolute;left:50%;transform:translateX(-50%);border:none;border-radius:999px;padding:15px 22px;font-size:16px;font-weight:600;cursor:pointer;transition:left .1s ease, top .1s ease, transform .15s ease, filter .2s ease;-webkit-appearance:none;backdrop-filter:saturate(180%) blur(12px)}
-    .yes{top:0;background:linear-gradient(135deg,#ff5f7e,#ff2d55);color:#fff;box-shadow:0 14px 30px rgba(255,45,85,.35)}
-    .yes:active{transform:translateX(-50%) scale(.94)}
-    .no{top:70px;background:rgba(255,255,255,.85);color:var(--text);border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 24px rgba(0,0,0,.12)}
-    .result{display:none;margin-top:32px;font-size:22px}
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      margin-bottom:18px;
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
+      font-size:16px;
+      animation:fadeUp .6s ease both
+    }
+
+    .card:nth-of-type(2){animation-delay:.05s}
+
+    .buttons{position:fixed;inset:0;pointer-events:none}
+
+    button{
+      pointer-events:auto;position:fixed;
+      border:none;border-radius:999px;
+      padding:15px 28px;font-size:16px;font-weight:600;
+      transition:transform .18s cubic-bezier(.2,.8,.2,1), left .12s ease, top .12s ease
+    }
+
+    .yes{
+      left:50%;top:62%;transform:translateX(-50%);
+      background:linear-gradient(180deg,var(--blue),var(--green));
+      color:#fff;
+      box-shadow:0 18px 36px rgba(59,109,246,.45)
+    }
+
+    .yes:active{transform:translateX(-50%) scale(.96)}
+
+    .no{
+      left:50%;top:70%;transform:translateX(-50%);
+      background:#fff;color:var(--text);
+      box-shadow:0 10px 20px rgba(0,0,0,.15)
+    }
+
+    .result{display:none;margin-top:30px;font-size:22px;font-weight:600}
+
     .float{position:fixed;bottom:-40px;font-size:22px;animation:floatUp linear forwards;pointer-events:none}
+
     @keyframes floatUp{to{transform:translateY(-110vh) translateX(var(--x));opacity:0}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <header class="safe"><div class="wrap"><h1>For Juls</h1><div>💗</div></div></header>
 
-  <main class="safe">
-    <h2>Hey Juls</h2>
-    <p>I have a tiny question.</p>
+  <main>
+    <h2>Go Juls!</h2>
+    <div class="emoji">🏃‍♀️🔥</div>
+    <p>All gas. No brakes.</p>
 
     <div class="puppy">
-      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExajh6MTU0Nmw4b2RpZTZtMGVjZXRybjkzYmxteDZmNGc0a2pvYXBldyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="cute puppy" />
+      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExajh6MTU0Nmw4b2RpZTZtMGVjZXRybjkzYmxteDZmNGc0a2pvYXBldyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="puppy" />
     </div>
 
     <div class="card">Will you be my Valentine?</div>
 
-    <div class="buttons" id="area">
-      <button class="yes" id="yes">Yes 💕</button>
+    <div class="buttons">
+      <button class="yes" id="yes">Yes 💙</button>
       <button class="no" id="no">No</button>
     </div>
 
-    <div class="result" id="result">💖 It’s a date 💖</div>
+    <div class="result" id="result">💙 Let’s go 💙</div>
   </main>
 
   <script>
-    const yes=document.getElementById('yes'),no=document.getElementById('no'),area=document.getElementById('area'),result=document.getElementById('result');
+    const yes=document.getElementById('yes'),no=document.getElementById('no'),result=document.getElementById('result');
 
     const noTexts=[
       "Don’t skip leg day 🏋️‍♀️",
@@ -64,54 +144,51 @@
       "Not strong enough yet 😬",
       "Try again after cardio 🏃‍♀️"
     ];
-    let noIndex=0;
+    let noIndex=-1;
+
+    // iOS-style haptic helpers
+    function hapticLight(){ if(navigator.vibrate) navigator.vibrate(8); }
+    function hapticMedium(){ if(navigator.vibrate) navigator.vibrate(16); }
 
     yes.onclick=()=>{
-      haptic(20);
+      hapticMedium();
       result.style.display='block';
       hearts();
     };
 
-    function haptic(ms){ if(navigator.vibrate) navigator.vibrate(ms); }
-
     function moveNo(){
-      haptic(10);
+      hapticLight();
 
-      // change text only after interaction
-      noIndex = (noIndex + 1) % noTexts.length;
-      no.textContent = noTexts[noIndex];
+      noIndex=(noIndex+1)%noTexts.length;
+      no.textContent=noTexts[noIndex];
 
-      // force layout recalculation (important for iOS Safari)
-      const rect = no.getBoundingClientRect();
+      const rect=no.getBoundingClientRect();
+      const safeTop=env('top'),safeBottom=env('bottom'),safeLeft=env('left'),safeRight=env('right');
+      const padding=14;
 
-      // iOS safe-area aware bounds
-      const safeTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-top')) || 0;
-      const safeBottom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom')) || 0;
+      const maxX=window.innerWidth-rect.width-safeRight-padding;
+      const maxY=window.innerHeight-rect.height-safeBottom-padding;
 
-      const padding = 16;
-      const maxX = window.innerWidth - rect.width - padding;
-      const maxY = window.innerHeight - rect.height - padding - safeBottom;
+      const x=clamp(Math.random()*maxX,safeLeft+padding,maxX);
+      const y=clamp(Math.random()*maxY,safeTop+padding,maxY);
 
-      const x = Math.max(padding, Math.random() * maxX);
-      const y = Math.max(safeTop + padding, Math.random() * maxY);
-
-      no.style.left = x + 'px';
-      no.style.top = y + 'px';
+      no.style.left=x+'px';
+      no.style.top=y+'px';
+      no.style.transform='none';
     }
+
+    function clamp(v,min,max){return Math.min(Math.max(v,min),max)}
+    function env(edge){return parseInt(getComputedStyle(document.documentElement).getPropertyValue(`env(safe-area-inset-${edge})`))||0}
 
     no.addEventListener('touchstart',moveNo,{passive:true});
     no.addEventListener('mouseover',moveNo);
 
     function hearts(){
-      for(let i=0;i<16;i++){
-        const h=document.createElement('div');
-        h.className='float';
-        h.textContent='💗';
-        h.style.left=Math.random()*100+'vw';
-        h.style.setProperty('--x',(Math.random()*60-30)+'px');
-        h.style.animationDuration=2.5+Math.random()*1.5+'s';
-        document.body.appendChild(h);
-        setTimeout(()=>h.remove(),4500);
+      for(let i=0;i<14;i++){
+        const h=document.createElement('div');h.className='float';h.textContent='💗';
+        h.style.left=Math.random()*100+'vw';h.style.setProperty('--x',(Math.random()*60-30)+'px');
+        h.style.animationDuration=2.6+Math.random()*1.4+'s';
+        document.body.appendChild(h);setTimeout(()=>h.remove(),4500);
       }
     }
   </script>
