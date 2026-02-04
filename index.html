@@ -110,7 +110,7 @@
     function moveNo(){
       haptic(8);
 
-      // gym banter texts (restored)
+      // gym banter
       const banter=[
         "Don’t skip leg day 🏋️‍♀️",
         "Too slow 😌",
@@ -122,13 +122,30 @@
       no._i = (no._i ?? -1) + 1;
       no.textContent = banter[no._i % banter.length];
 
-      const rect=no.getBoundingClientRect();
-      const pad=16;
-      const maxX=window.innerWidth-rect.width-pad;
-      const maxY=window.innerHeight-rect.height-pad;
       no.style.position='fixed';
-      no.style.left=Math.max(pad,Math.random()*maxX)+'px';
-      no.style.top=Math.max(pad,Math.random()*maxY)+'px';
+
+      const noRect = no.getBoundingClientRect();
+      const yesRect = yes.getBoundingClientRect();
+      const pad = 16;
+
+      const maxX = window.innerWidth - noRect.width - pad;
+      const maxY = window.innerHeight - noRect.height - pad;
+
+      let x, y, tries = 0;
+      do {
+        x = Math.max(pad, Math.random() * maxX);
+        y = Math.max(pad, Math.random() * maxY);
+        tries++;
+      } while (
+        tries < 20 &&
+        x < yesRect.right + pad &&
+        x + noRect.width > yesRect.left - pad &&
+        y < yesRect.bottom + pad &&
+        y + noRect.height > yesRect.top - pad
+      );
+
+      no.style.left = x + 'px';
+      no.style.top = y + 'px';
     }
     no.addEventListener('touchstart',moveNo,{passive:true});
     no.addEventListener('mouseover',moveNo);
